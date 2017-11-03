@@ -84,18 +84,98 @@ export class ListComponent implements OnInit {
   }
 
   getPlanets() {
-
+    this.service.getPlanets(1)
+      .subscribe(
+        res => {
+          if(res.next !== null) {
+            let count : number = res.count;
+            let numOfPages = Math.ceil((count - res.results.length)/this.itemsPerPage);
+            let pages = Array.from({ length: numOfPages-1 }, (v, i) => i+1);
+            Observable.forkJoin(
+              Observable.of(pages.map(
+                i =>
+                  this.service.getPlanets(i)
+                  .map(res => res.json())
+              )).delay(1000)
+            ).subscribe(data => {
+              this.data = this.data.concat(res.results);
+            })
+          } else {
+            this.data = this.data.concat(res.results);
+          }
+        }, err => console.error(err)
+      );
   }
 
   getSpecies() {
-
+    this.service.getSpecies(1)
+      .subscribe(
+        res => {
+          if(res.next !== null) {
+            let count : number = res.count;
+            let numOfPages = Math.ceil((count - res.results.length)/this.itemsPerPage);
+            let pages = Array.from({ length: numOfPages-1 }, (v, i) => i+1);
+            Observable.forkJoin(
+              Observable.of(pages.map(
+                i =>
+                  this.service.getSpecies(i)
+                  .map(res => res.json())
+              )).delay(1000)
+            ).subscribe(data => {
+              this.data = this.data.concat(res.results);
+            })
+          } else {
+            this.data = this.data.concat(res.results);
+          }
+        }, err => console.error(err)
+      );
   }
 
   getStarShips() {
-
+    this.service.getStarShips(1)
+      .subscribe(
+        res => {
+          if(res.next !== null) {
+            let count : number = res.count;
+            let numOfPages = Math.ceil((count - res.results.length)/this.itemsPerPage);
+            let pages = Array.from({ length: numOfPages-1 }, (v, i) => i+1);
+            Observable.forkJoin(
+              Observable.of(pages.map(
+                i =>
+                  this.service.getStarShips(i)
+                  .map(res => res.json())
+              )).delay(1000)
+            ).subscribe(data => {
+              this.data = this.data.concat(res.results);
+            })
+          } else {
+            this.data = this.data.concat(res.results);
+          }
+        }, err => console.error(err)
+      );
   }
   getVehicles() {
-
+    this.service.getVehicles(1)
+      .subscribe(
+        res => {
+          if(res.next !== null) {
+            let count : number = res.count;
+            let numOfPages = Math.ceil((count - res.results.length)/this.itemsPerPage);
+            let pages = Array.from({ length: numOfPages-1 }, (v, i) => i+1);
+            Observable.forkJoin(
+              Observable.of(pages.map(
+                i =>
+                  this.service.getVehicles(i)
+                  .map(res => res.json())
+              )).delay(1000)
+            ).subscribe(data => {
+              this.data = this.data.concat(res.results);
+            })
+          } else {
+            this.data = this.data.concat(res.results);
+          }
+        }, err => console.error(err)
+      );
   }
 
 }

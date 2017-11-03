@@ -25,6 +25,30 @@ export class SWAPIService {
       .catch(this.handleError);
   }
 
+  getPlanets(page) {
+    return this.http.get(`${this.apiUrl}planets/?page=${page}`)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
+  getSpecies(page) {
+    return this.http.get(`${this.apiUrl}species/?page=${page}`)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
+  getStarShips(page) {
+    return this.http.get(`${this.apiUrl}starships/?page=${page}`)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
+  getVehicles(page) {
+    return this.http.get(`${this.apiUrl}vehicles/?page=${page}`)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
   handleError(error: Response) {
     return Observable.throw(error);
   }
