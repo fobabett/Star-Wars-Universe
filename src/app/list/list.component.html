@@ -6,8 +6,9 @@
 		</div>
 	</div>
 	<div class="grid">
-		<div class="grid-item" *ngFor="let item of data">
+		<a class="grid-item" *ngFor="let item of service.data" routerLink="/{{ item?.category }}/{{ item?.id }}">
 			<h4 class="grid-item-title">{{ item?.title ? item.title : item.name }}</h4>
-		</div>
+			<p>{{ item?.category }}</p>
+		</a>
 	</div>
 </div>
