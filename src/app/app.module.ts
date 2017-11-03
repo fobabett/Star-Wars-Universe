@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { SWAPIService } from './swapi.service';
 import { appRoutingProviders, routing } from './app.routes';
 
 @NgModule({
@@ -20,7 +21,7 @@ import { appRoutingProviders, routing } from './app.routes';
     HttpModule,
     FormsModule
   ],
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders, SWAPIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
