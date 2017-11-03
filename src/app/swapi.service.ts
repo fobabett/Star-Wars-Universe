@@ -19,6 +19,12 @@ export class SWAPIService {
       .catch(this.handleError);
   }
 
+  getPeople(page) {
+    return this.http.get(`${this.apiUrl}people/?page=${page}`)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
+
   handleError(error: Response) {
     return Observable.throw(error);
   }

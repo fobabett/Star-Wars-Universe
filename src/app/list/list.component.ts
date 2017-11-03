@@ -34,39 +34,53 @@ export class ListComponent implements OnInit {
   }
 
   getFilms() {
-    let films;
     this.service.getFilms(1)
       .subscribe(
         res => {
           if(res.next !== null) {
             let count : number = res.count;
             let numOfPages = Math.ceil((count - res.results.length)/this.itemsPerPage);
-            let pages = Array.from({ length: numOfPages }, (v, i) => i);
+            let pages = Array.from({ length: numOfPages-1 }, (v, i) => i+1);
             Observable.forkJoin(
+              Observable.of(
               pages.map(
                 i => this.service.getFilms(i)
                   .map(res => res.json())
-              )
+              )).delay(1000)
             ).subscribe(data => {
-              this.data = this.data.concat(res.results.map((item) => {
-                item.category = 'films';
-                item.id = item.url.split(`${item.category}/`)[1];
-                return item;
-              }));
+              this.data = this.data.concat(res.results);
             });
           } else {
-            this.data = this.data.concat(res.results.map((item) => {
-              item.category = 'films';
-              item.id = item.url.split(`${item.category}/`)[1];
-              return item;
-            }));
+            this.data = this.data.concat(res.results);
+            console.log(this.data)
           }
         }, err => console.error(err)
-      )
+      );
+
   }
 
   getPeople() {
-
+    this.service.getPeople(1)
+      .subscribe(
+        res => {
+          if(res.next !== null) {
+            let count : number = res.count;
+            let numOfPages = Math.ceil((count - res.results.length)/this.itemsPerPage);
+            let pages = Array.from({ length: numOfPages-1 }, (v, i) => i+1);
+            Observable.forkJoin(
+              Observable.of(pages.map(
+                i =>
+                  this.service.getPeople(i)
+                  .map(res => res.json())
+              )).delay(1000)
+            ).subscribe(data => {
+              this.data = this.data.concat(res.results);
+            })
+          } else {
+            this.data = this.data.concat(res.results);
+          }
+        }, err => console.error(err)
+      );
   }
 
   getPlanets() {
