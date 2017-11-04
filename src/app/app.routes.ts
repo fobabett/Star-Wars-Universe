@@ -4,8 +4,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { ListComponent } from './list';
 
 const AppRoutes : Routes = [
-  { path: '', component: ListComponent },
-  // { path: ':category/:id', component: ItemDetailComponent }
+  { path: '', component: ListComponent }
 ];
 
 export const appRoutingProviders: any[] = [];

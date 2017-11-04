@@ -1,14 +1,17 @@
 <div class="content-container container">
 	<div class="hero">
 		<h1>Star Wars Universe</h1>
-		<div>
+		<div class="search-bar-container">
 			<search-bar (search)='search($event)'></search-bar>
 		</div>
 	</div>
-	<div class="grid">
-		<a class="grid-item" *ngFor="let item of service.data | search: searchInput" href="">
-			<h4 class="grid-item-title">{{ item?.title ? item?.title : item?.name }}</h4>
-			<p>{{ item?.category }}</p>
-		</a>
+	<div class="columns is-multiline">
+		<div class="column is-3" *ngFor="let item of service.data | search: searchInput">
+			<div>
+				<h4 class="grid-item-title">{{ item?.title ? item?.title : item?.name }}</h4>
+				<a href="{{ item?.url }}">View Source</a>
+				<p class="category">Category: {{ item?.category }}</p>
+			</div>
+		</div>
 	</div>
 </div>

@@ -1,23 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
- @mixin breakpoint($point) {
-   @if $point == desktop {
-     @media (min-width: 1024px) { @content ; }
-  }
-    @else if $point == tablet {
-     @media (min-width: 769px) { @content ; }
-  }
-  @else if $point == mobile {
-     @media (max-width: 768px)  { @content ; }
-
-  }
-}
-
 html,body{
   background-color: #000;
+  font-family: 'Open Sans', sans-serif;
+  color: #fff;
 }
 
-.container{
-  padding: 0;
+h1,h4{
+  text-transform: uppercase;
 }
 
 .hero{
@@ -25,23 +13,70 @@ html,body{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  height: 450px;
+  height: 350px;
   width: 100%;
+  position: relative;
+
+  h1{
+    margin: 0 auto;
+    font-weight: bold;
+    font-size: 30px;
+    display: inline-block;
+    width: 960px;
+    letter-spacing: 1px;
+  }
 }
 
-.grid{
+.search-bar-container{
+  width: 960px;
+  margin: 0 auto;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+
+  input,button{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: 50px;
+  }
+
+  input{
+    width: 90%;
+    text-indent: 10px;
+  }
+
+  button{
+    width: 9%;
+    background-color: #3776D9;
+    border-color: #3776D9;
+    color: #fff;
+  }
+}
+
+.columns{
   max-width: 960px;
   margin: 0 auto;
-  border: 1px solid red;
+  margin-top: 50px;
 }
 
-.grid-item{
-  border: 1px solid blue;
-  margin: 10px;
-  display: inline-block;
-  width: 100%;
+.column{
 
-  @include breakpoint(desktop){
-    width: 20%;
+  div{
+    border: 1px solid #fff;
+    height: 200px;
+    padding: 20px;
+    position: relative;
+    font-size: 14px;
   }
+
+  h4{
+    margin-bottom: 20px;
+  }
+}
+
+.category{
+  position: absolute;
+  bottom: 20px;
+  color: #595856;
 }
