@@ -1,2 +1,2 @@
-<input type="text" name="search" [(ngModel)]="searchInput" placeholder="search">
+<input type="text" name="search" [(ngModel)]="searchInput" placeholder="search" (keypress)="keypressed($event)">
 <button (click)="search.emit(searchInput)">Search</button>

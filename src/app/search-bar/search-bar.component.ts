@@ -15,4 +15,10 @@ export class SearchBarComponent implements OnInit {
   ngOnInit() {
   }
 
+  keypressed(event) {
+    if(event.keyCode === 13) {
+      this.search.emit(this.searchInput);
+    }
+  }
+
 }
