@@ -12,7 +12,7 @@ export class SearchPipe implements PipeTransform {
       let result = items.filter((item) => {
         let match = false;
         for(const [key, value] of Object.entries(item)) {
-          if(value.toString().toLowerCase().includes(search.toString().toLowerCase())) {
+          if((key === 'title' || key === 'name') && value.toString().toLowerCase().includes(search.toString().toLowerCase())) {
             match = true;
           }
         }
