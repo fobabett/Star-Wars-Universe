@@ -39,6 +39,8 @@ h1,h4{
     padding-top: 10px;
     padding-bottom: 10px;
     height: 50px;
+    font-size: 14px;
+    text-transform: uppercase;
   }
 
   input{
@@ -102,6 +104,10 @@ h1,h4{
   position: absolute;
   bottom: 20px;
   color: #595856;
+}
+
+.no-match-message{
+  position: absolute;
 }
 
 .modal{

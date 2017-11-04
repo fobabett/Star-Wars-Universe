@@ -7,12 +7,13 @@
 	</div>
 	<div class="columns is-multiline" *ngIf="!loading">
 		<div class="column is-3" *ngFor="let item of service.data | search: searchInput">
-			<div (click)="viewDetails(item)">
+			<div (click)="viewDetails(item)"*ngIf="item !== -1">
 				<h4 class="grid-item-title">{{ item?.title ? item?.title : item?.name }}</h4>
 				<a href="{{ item?.url }}">View Source</a>
 				<p class="category">Category: {{ item?.category }}</p>
 				<p class="view-details">View Details</p>
 			</div>
+			<p class="no-match-message" *ngIf="item === -1">These aren't the droids you're looking for. No matches.</p>
 		</div>
 	</div>
 	<div class="loader" *ngIf="loading"></div>

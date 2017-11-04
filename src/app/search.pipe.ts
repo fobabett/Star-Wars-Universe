@@ -9,7 +9,7 @@ export class SearchPipe implements PipeTransform {
     if(search === '') {
       return items;
     } else {
-      return items.filter((item) => {
+      let result = items.filter((item) => {
         let match = false;
         for(const [key, value] of Object.entries(item)) {
           if(value.toString().toLowerCase().includes(search.toString().toLowerCase())) {
@@ -20,6 +20,10 @@ export class SearchPipe implements PipeTransform {
           return item;
         }
       });
+      if(result.length === 0) {
+        return [-1];
+      }
+      return result;
     }
   }
 
