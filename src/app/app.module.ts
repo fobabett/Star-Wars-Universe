@@ -10,6 +10,7 @@ import { appRoutingProviders, routing } from './app.routes';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchPipe } from './search.pipe';
 import { ModalComponent } from './modal/modal.component';
+import { DropdownFilterComponent } from './dropdown-filter/dropdown-filter.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ModalComponent } from './modal/modal.component';
     ListComponent,
     SearchBarComponent,
     SearchPipe,
-    ModalComponent
+    ModalComponent,
+    DropdownFilterComponent
   ],
   imports: [
     BrowserModule,

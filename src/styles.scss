@@ -77,8 +77,7 @@ h1,h4{
 
 .loader{
   margin: 0 auto;
-  margin-top: 50px;
-  width: 100px;
+  margin-top: 100px; width: 100px;
   height: 100px;
 }
 
@@ -135,4 +134,13 @@ h1,h4{
 
 .modal-card{
   width: unset;
+  transform: translateY(50%);
+  -webkit-transform: translateY(50%);
+  -moz-transform: translateY(50%);
+  -o-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+
+  @include breakpoint(desktop){
+    width: 50%;
+  }
 }

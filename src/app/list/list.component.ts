@@ -6,12 +6,13 @@ import { SWAPIService } from '../swapi.service';
 import { SearchBarComponent } from '../search-bar';
 import { SearchPipe } from '../search.pipe';
 import { ModalComponent } from '../modal';
+import { DropdownFilterComponent } from '../dropdown-filter';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css'],
-  providers: [SearchBarComponent]
+  providers: [SearchBarComponent, DropdownFilterComponent]
 })
 export class ListComponent implements OnInit {
 
@@ -22,6 +23,7 @@ export class ListComponent implements OnInit {
   modalOpen : boolean = false;
   loading : boolean = true;
   modalItem;
+  filterOption : string = 'all';
 
   constructor(private service: SWAPIService, public searchBar: SearchBarComponent) {
     this.categories = ['films', 'people', 'planets', 'species', 'starships', 'vehicles'];
@@ -36,6 +38,10 @@ export class ListComponent implements OnInit {
 
   search(input:string) {
     this.searchInput = input;
+  }
+
+  filterOptionSelected(value:string) {
+    this.filterOption = value;
   }
 
   getData(category:string) {

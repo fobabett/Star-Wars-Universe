@@ -4,6 +4,9 @@
 		<div class="search-bar-container">
 			<search-bar class="columns" (search)='search($event)'></search-bar>
 		</div>
+		<div>
+			<dropdown-filter [categories]="categories" (filterOptionSelected)="filterOptionSelected($event)"></dropdown-filter>
+		</div>
 	</div>
 	<div class="columns is-multiline" *ngIf="!loading">
 		<div class="column is-3" *ngFor="let item of service.data | search: searchInput">
