@@ -9,13 +9,15 @@ import { SWAPIService } from './swapi.service';
 import { appRoutingProviders, routing } from './app.routes';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchPipe } from './search.pipe';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
     SearchBarComponent,
-    SearchPipe
+    SearchPipe,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

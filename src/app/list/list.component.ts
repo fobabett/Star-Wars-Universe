@@ -16,10 +16,17 @@ export class ListComponent implements OnInit {
 
   itemsPerPage : number = 10;
   searchInput : string = '';
+  categories : Array<any>;
 
   constructor(private service: SWAPIService, public searchBar: SearchBarComponent) {
+    this.categories = ['films', 'people', 'planets', 'species', 'starships', 'vehicles'];
     if(this.service.data === undefined) {
-      this.getData();
+      this.service.data = [];
+      this.categories.forEach((cat) => {
+        setTimeout(() => {
+          this.getData(cat);
+        },1000)
+      });
     }
   }
 
@@ -30,18 +37,8 @@ export class ListComponent implements OnInit {
     this.searchInput = input;
   }
 
-  getData() {
-    this.service.data = [];
-    this.getFilms();
-    this.getPeople();
-    this.getPlanets();
-    this.getSpecies();
-    this.getStarShips();
-    this.getVehicles();
-  }
-
-  getFilms() {
-    this.service.getFilms(1)
+  getData(category:string) {
+    this.service.getData(category, 1)
       .subscribe(
         res => {
           if(res.next !== null) {
@@ -50,9 +47,9 @@ export class ListComponent implements OnInit {
             let pages = Array.from({ length: numOfPages }, (v, i) => i+1);
             setTimeout(() => {
               pages.map((i) => {
-                this.service.getFilms(i).subscribe(
+                this.service.getData(category, i).subscribe(
                   res => this.service.data = this.service.data.concat(res.results.map((item) => {
-                    item.category = 'films';
+                    item.category = category;
                     return item;
                   }))),
                   err => console.error(err)
@@ -60,133 +57,9 @@ export class ListComponent implements OnInit {
             },1000)
           } else {
             this.service.data = this.service.data.concat(res.results.map((item) => {
-              item.category = 'films';
+              item.category = category;
               return item;
             }));
-          }
-        }, err => console.error(err)
-      );
-  }
-
-  getPeople() {
-    this.service.getPeople(1)
-      .subscribe(
-        res => {
-          if(res.next !== null) {
-            let count : number = res.count;
-            let numOfPages = Math.ceil((count - res.results.length)/this.itemsPerPage);
-            let pages = Array.from({ length: numOfPages }, (v, i) => i+1);
-            setTimeout(() => {
-              pages.map((i) => {
-                this.service.getPeople(i).subscribe(
-                  res => this.service.data = this.service.data.concat(res.results.map((item) => {
-                    item.category = 'people';
-                    return item;
-                  }))),
-                  err => console.error(err)
-              })
-            },1000)
-          } else {
-            this.service.data = this.service.data.concat(res.results);
-          }
-        }, err => console.error(err)
-      );
-  }
-
-  getPlanets() {
-    this.service.getPlanets(1)
-      .subscribe(
-        res => {
-          if(res.next !== null) {
-            let count : number = res.count;
-            let numOfPages = Math.ceil((count - res.results.length)/this.itemsPerPage);
-            let pages = Array.from({ length: numOfPages }, (v, i) => i+1);
-            setTimeout(() => {
-              pages.map((i) => {
-                this.service.getPlanets(i).subscribe(
-                  res => this.service.data = this.service.data.concat(res.results.map((item) => {
-                    item.category = 'planets';
-                    return item;
-                  }))),
-                  err => console.error(err)
-              })
-            },1000)
-          } else {
-            this.service.data = this.service.data.concat(res.results);
-          }
-        }, err => console.error(err)
-      );
-  }
-
-  getSpecies() {
-    this.service.getSpecies(1)
-      .subscribe(
-        res => {
-          if(res.next !== null) {
-            let count : number = res.count;
-            let numOfPages = Math.ceil((count - res.results.length)/this.itemsPerPage);
-            let pages = Array.from({ length: numOfPages }, (v, i) => i+1);
-            setTimeout(() => {
-              pages.map((i) => {
-                this.service.getSpecies(i).subscribe(
-                  res => this.service.data = this.service.data.concat(res.results.map((item) => {
-                    item.category = 'species';
-                    return item;
-                  }))),
-                  err => console.error(err)
-              })
-            },1000)
-          } else {
-            this.service.data = this.service.data.concat(res.results);
-          }
-        }, err => console.error(err)
-      );
-  }
-
-  getStarShips() {
-    this.service.getStarShips(1)
-      .subscribe(
-        res => {
-          if(res.next !== null) {
-            let count : number = res.count;
-            let numOfPages = Math.ceil((count - res.results.length)/this.itemsPerPage);
-            let pages = Array.from({ length: numOfPages }, (v, i) => i+1);
-            setTimeout(() => {
-              pages.map((i) => {
-                this.service.getStarShips(i).subscribe(
-                  res => this.service.data = this.service.data.concat(res.results.map((item) => {
-                    item.category = 'starships';
-                    return item;
-                  }))),
-                  err => console.error(err)
-              })
-            },1000)
-          } else {
-            this.service.data = this.service.data.concat(res.results);
-          }
-        }, err => console.error(err)
-      );
-  }
-  getVehicles() {
-    this.service.getVehicles(1)
-      .subscribe(
-        res => {
-          if(res.next !== null) {
-            let count : number = res.count;
-            let numOfPages = Math.ceil((count - res.results.length)/this.itemsPerPage);
-            let pages = Array.from({ length: numOfPages }, (v, i) => i+1);
-            setTimeout(() => {
-              pages.map((i) => {
-                this.service.getVehicles(i).subscribe(
-                  res => this.service.data = this.service.data.concat(res.results.map((item) => {
-                    item.category = 'vehicles';
-                    return item;
-                  }))),
-                  err => console.error(err)
-              })
-            },1000)
-          } else {
-            this.service.data = this.service.data.concat(res.results);
           }
         }, err => console.error(err)
       );
