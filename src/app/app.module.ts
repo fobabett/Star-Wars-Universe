@@ -5,17 +5,17 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
-import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { SWAPIService } from './swapi.service';
 import { appRoutingProviders, routing } from './app.routes';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    ItemDetailComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,

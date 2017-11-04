@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 
 import { SWAPIService } from '../swapi.service';
 import { SearchBarComponent } from '../search-bar';
+import { SearchPipe } from '../search.pipe';
 
 @Component({
   selector: 'app-list',
