@@ -1,2 +1,2 @@
-<input type="text" name="search" [(ngModel)]="searchInput" placeholder="search" (keypress)="keypressed($event)">
-<button (click)="search.emit(searchInput)">Search</button>
+<input class="column" type="text" name="search" [(ngModel)]="searchInput" placeholder="search" (keypress)="keypressed($event)">
+<button class="column" class="is-hidden-touch" (click)="search.emit(searchInput)">Search</button>

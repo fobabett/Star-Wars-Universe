@@ -27,11 +27,7 @@ export class ListComponent implements OnInit {
     this.categories = ['films', 'people', 'planets', 'species', 'starships', 'vehicles'];
     if(this.service.data === undefined) {
       this.service.data = [];
-      this.categories.forEach((cat) => {
-        setTimeout(() => {
-          this.getData(cat);
-        },1000)
-      });
+      this.categories.forEach((cat) => setTimeout(() => this.getData(cat), 1000));
     }
   }
 
