@@ -2,14 +2,14 @@
 	<div class="hero">
 		<h1>Star Wars Universe</h1>
 		<div class="search-bar-container">
-			<search-bar class="columns" (search)='search($event)'></search-bar>
+			<search-bar class="columns" (search)="search($event)"></search-bar>
 		</div>
 		<div>
 			<dropdown-filter [categories]="categories" (filterOptionSelected)="filterOptionSelected($event)"></dropdown-filter>
 		</div>
 	</div>
 	<div class="columns is-multiline" *ngIf="!loading">
-		<div class="column is-3" *ngFor="let item of service.data | search: searchInput">
+		<div class="column is-3" *ngFor="let item of service.data | search: searchInput | filter: filterOption">
 			<div (click)="viewDetails(item)"*ngIf="item !== -1">
 				<h4 class="grid-item-title">{{ item?.title ? item?.title : item?.name }}</h4>
 				<a href="{{ item?.url }}">View Source</a>
@@ -21,4 +21,4 @@
 	</div>
 	<div class="loader" *ngIf="loading"></div>
 </div>
-<app-modal *ngIf="modalOpen" [modalItem]='modalItem' (modalClosed)='modalClosed()'></app-modal>
+<app-modal *ngIf="modalOpen" [modalItem]="modalItem" (modalClosed)="modalClosed()"></app-modal>

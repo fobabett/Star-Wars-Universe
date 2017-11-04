@@ -7,6 +7,7 @@ import { SearchBarComponent } from '../search-bar';
 import { SearchPipe } from '../search.pipe';
 import { ModalComponent } from '../modal';
 import { DropdownFilterComponent } from '../dropdown-filter';
+import { FilterPipe } from '../filter.pipe';
 
 @Component({
   selector: 'app-list',

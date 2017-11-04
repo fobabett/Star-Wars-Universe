@@ -11,6 +11,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SearchPipe } from './search.pipe';
 import { ModalComponent } from './modal/modal.component';
 import { DropdownFilterComponent } from './dropdown-filter/dropdown-filter.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DropdownFilterComponent } from './dropdown-filter/dropdown-filter.compo
     SearchBarComponent,
     SearchPipe,
     ModalComponent,
-    DropdownFilterComponent
+    DropdownFilterComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

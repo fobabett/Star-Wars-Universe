@@ -1,4 +1,4 @@
-<select [(ngModel)]="dropdownFilter" (ngModelChange)="filterOptionSelected(dropdownFilter)">
-	<option value="all">All</option>
-	<option *ngFor="let category of categories">Filter By {{ category }}</option>
+<select [(ngModel)]="dropdownFilter" (ngModelChange)="filterOptionSelected.emit(dropdownFilter)">
+	<option value="all" selected="">All</option>
+	<option *ngFor="let category of categories" [ngValue]="category">Filter By {{ category }}</option>
 </select>
