@@ -5,7 +5,7 @@
 			<search-bar (search)='search($event)'></search-bar>
 		</div>
 	</div>
-	<div class="columns is-multiline">
+	<div class="columns is-multiline" *ngIf="!loading">
 		<div class="column is-3" *ngFor="let item of service.data | search: searchInput">
 			<div (click)="viewDetails(item)">
 				<h4 class="grid-item-title">{{ item?.title ? item?.title : item?.name }}</h4>
@@ -15,5 +15,6 @@
 			</div>
 		</div>
 	</div>
+	<div class="loader" *ngIf="loading"></div>
 </div>
 <app-modal *ngIf="modalOpen" [modalItem]='modalItem' (modalClosed)='modalClosed()'></app-modal>

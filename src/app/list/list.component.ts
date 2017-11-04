@@ -18,7 +18,9 @@ export class ListComponent implements OnInit {
   itemsPerPage : number = 10;
   searchInput : string = '';
   categories : Array<any>;
+  loadedCategories : Array<any> = [];
   modalOpen : boolean = false;
+  loading : boolean = true;
   modalItem;
 
   constructor(private service: SWAPIService, public searchBar: SearchBarComponent) {
@@ -50,22 +52,27 @@ export class ListComponent implements OnInit {
             let pages = Array.from({ length: numOfPages }, (v, i) => i+1);
             setTimeout(() => {
               pages.map((i) => {
-                this.service.getData(category, i).subscribe(
-                  res => this.service.data = this.service.data.concat(res.results.map((item) => {
-                    item.category = category;
-                    return item;
-                  }))),
-                  err => console.error(err)
+                this.service.getData(category, i)
+                  .subscribe(
+                    res => this.handleData(res, category),
+                    err => console.error(err)
+                  )
               });
             },1000);
           } else {
-            this.service.data = this.service.data.concat(res.results.map((item) => {
-              item.category = category;
-              return item;
-            }));
+            this.handleData(res, category);
           }
         }, err => console.error(err)
       );
+  }
+
+  handleData(data, category) {
+    this.service.data = this.service.data.concat(data.results.map((item) => {
+      item.category = category;
+      return item;
+    }));
+    this.loadedCategories.push(category);
+    this.loading = Array.from(new Set(this.loadedCategories)).length === this.categories.length ? false : true;
   }
 
   viewDetails(item) {
