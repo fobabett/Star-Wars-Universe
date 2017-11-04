@@ -148,7 +148,7 @@ AppModule = __decorate([
 
 
 var AppRoutes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_1__list__["a" /* ListComponent */] }
+    { path: 'star-wars-universe', component: __WEBPACK_IMPORTED_MODULE_1__list__["a" /* ListComponent */] }
 ];
 var appRoutingProviders = [];
 var routing = __WEBPACK_IMPORTED_MODULE_0__angular_router__["a" /* RouterModule */].forRoot(AppRoutes);
