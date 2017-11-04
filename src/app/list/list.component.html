@@ -1,11 +1,13 @@
 <div class="content-container container">
 	<div class="hero">
 		<h1>Star Wars Universe</h1>
-		<div class="search-bar-container">
-			<search-bar class="columns" (search)="search($event)"></search-bar>
-		</div>
-		<div>
-			<dropdown-filter [categories]="categories" (filterOptionSelected)="filterOptionSelected($event)"></dropdown-filter>
+		<div class="columns search-filter-container">
+			<div class="dropdown-filter-container column is-half">
+				<dropdown-filter class="columns" [categories]="categories" (filterOptionSelected)="filterOptionSelected($event)"></dropdown-filter>
+			</div>
+			<div class="search-bar-container column is-half">
+				<search-bar class="columns" (search)="search($event)"></search-bar>
+			</div>
 		</div>
 	</div>
 	<div class="columns is-multiline" *ngIf="!loading">

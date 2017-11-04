@@ -9,8 +9,8 @@ export class DropdownFilterComponent implements OnInit {
 
   @Input() categories : Array<any>;
   @Output() filterOptionSelected = new EventEmitter();
-  dropfownFilter : string = 'all';
-  
+  dropdownFilter : string = 'all';
+
   constructor() { }
 
   ngOnInit() {
