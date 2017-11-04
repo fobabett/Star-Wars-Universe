@@ -7,11 +7,13 @@
 	</div>
 	<div class="columns is-multiline">
 		<div class="column is-3" *ngFor="let item of service.data | search: searchInput">
-			<div>
+			<div (click)="viewDetails(item)">
 				<h4 class="grid-item-title">{{ item?.title ? item?.title : item?.name }}</h4>
 				<a href="{{ item?.url }}">View Source</a>
 				<p class="category">Category: {{ item?.category }}</p>
+				<p class="view-details">View Details</p>
 			</div>
 		</div>
 	</div>
 </div>
+<app-modal *ngIf="modalOpen" [modalItem]='modalItem' (modalClosed)='modalClosed()'></app-modal>

@@ -68,15 +68,35 @@ h1,h4{
     padding: 20px;
     position: relative;
     font-size: 14px;
+    cursor: pointer;
+    transition: 0.4s ease all;
+
+    &:hover{
+      background-color: #fff;
+
+      & h4{
+        color: #000;
+      }
+    }
   }
 
   h4{
     margin-bottom: 20px;
+    transition: 0.4s ease all;
   }
+}
+
+.view-details{
+  margin-top: 20px;
+  color: #000;
 }
 
 .category{
   position: absolute;
   bottom: 20px;
   color: #595856;
+}
+
+.modal{
+  color: #000;
 }

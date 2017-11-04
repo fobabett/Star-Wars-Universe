@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { SWAPIService } from '../swapi.service';
 import { SearchBarComponent } from '../search-bar';
 import { SearchPipe } from '../search.pipe';
+import { ModalComponent } from '../modal';
 
 @Component({
   selector: 'app-list',
@@ -17,6 +18,8 @@ export class ListComponent implements OnInit {
   itemsPerPage : number = 10;
   searchInput : string = '';
   categories : Array<any>;
+  modalOpen : boolean = false;
+  modalItem;
 
   constructor(private service: SWAPIService, public searchBar: SearchBarComponent) {
     this.categories = ['films', 'people', 'planets', 'species', 'starships', 'vehicles'];
@@ -53,8 +56,8 @@ export class ListComponent implements OnInit {
                     return item;
                   }))),
                   err => console.error(err)
-              })
-            },1000)
+              });
+            },1000);
           } else {
             this.service.data = this.service.data.concat(res.results.map((item) => {
               item.category = category;
@@ -63,6 +66,15 @@ export class ListComponent implements OnInit {
           }
         }, err => console.error(err)
       );
+  }
+
+  viewDetails(item) {
+    this.modalOpen = true;
+    this.modalItem = item;
+  }
+
+  modalClosed() {
+    this.modalOpen = false;
   }
 
 }

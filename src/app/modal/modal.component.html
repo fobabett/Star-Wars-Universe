@@ -1,3 +1,53 @@
-<p>
-  modal works!
-</p>
+<div class="modal" style="display:block">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">{{ modalItem?.title ? modalItem?.title : modalItem?.name }}</p>
+      <button class="delete" aria-label="close" (click)="modalClosed.emit()"></button>
+    </header>
+    <section class="modal-card-body">
+      <p>Category: {{ modalItem?.category }}</p>
+      <div *ngIf="modalItem?.category === 'people'">
+        <p>Birthday: {{ modalItem?.birth_year }}</p>
+        <p>Hair Color: {{ modalItem?.hair_color }}</p>
+        <p>Height: {{ modalItem?.height }}</p>
+        <p>Gender: {{ modalItem?.gender }}</p>
+        <p>Species: {{ getSpecies(modalItem) }}</p>
+      </div>
+      <div *ngIf="modalItem?.category === 'films'">
+        <p>Director: {{ modalItem?.director }}</p>
+        <p>Episode: {{ modalItem?.episode_id }}</p>
+        <p>Releae Date: {{ modalItem?.release_date }}</p>
+      </div>
+      <div *ngIf="modalItem?.category === 'starships'">
+        <p>Cargo Capacity: {{ modalItem?.cargo_capacity }}</p>
+        <p>Consumables: {{ modalItem?.consumables }}</p>
+        <p>Passengers: {{ modalItem?.passengers }}</p>
+        <p>Manufacturer: {{ modalItem?.manufacturer }}</p>
+        <p>Hyperdrive Rating: {{ modalItem?.hyperdrive_rating }}</p>
+      </div>
+      <div *ngIf="modalItem?.category === 'vehicles'">
+        <p>Cargo Capacity: {{ modalItem?.cargo_capacity }}</p>
+        <p>Consumables: {{ modalItem?.consumables }}</p>
+        <p>Passengers: {{ modalItem?.passengers }}</p>
+        <p>Manufacturer: {{ modalItem?.manufacturer }}</p>
+        <p>Model: {{ modalItem?.model }}</p>
+      </div>
+      <div *ngIf="modalItem?.category === 'species'">
+        <p>Average Height: {{ modalItem?.average_height }}</p>
+        <p>Average Lifespan: {{ modalItem?.average_lifespan }}</p>
+        <p>Language: {{ modalItem?.language }}</p>
+        <p>Classification: {{ modalItem?.classification }}</p>
+        <p>Skin Colors: {{ modalItem?.skin_colors }}</p>
+      </div>
+      <div *ngIf="modalItem?.category === 'planets'">
+        <p>Climate: {{ modalItem?.climate }}</p>
+        <p>Diameter: {{ modalItem?.diameter }}</p>
+        <p>Orbital Period: {{ modalItem?.orbital_period }}</p>
+        <p>Population: {{ modalItem?.population }}</p>
+        <p>Terrain: {{ modalItem?.terrain }}</p>
+        <p>Rotation Period: {{ modalItem?.rotation_period }}</p>
+      </div>
+    </section>
+  </div>
+</div>
