@@ -4,7 +4,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { ListComponent } from './list';
 
 const AppRoutes : Routes = [
-  { path: '', component: ListComponent }
+  { path: '/star-wars-universe', component: ListComponent }
 ];
 
 export const appRoutingProviders: any[] = [];
