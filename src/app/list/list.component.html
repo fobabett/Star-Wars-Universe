@@ -2,12 +2,12 @@
 	<div class="banner">
 		<h1>Star Wars Universe</h1>
 		<div>
-			<input type="text" name="search">
+			<search-bar (search)='search($event)'></search-bar>
 		</div>
 	</div>
 	<div class="grid">
 		<a class="grid-item" *ngFor="let item of service.data" routerLink="/{{ item?.category }}/{{ item?.id }}">
-			<h4 class="grid-item-title">{{ item?.title ? item.title : item.name }}</h4>
+			<h4 class="grid-item-title">{{ item?.title ? item?.title : item?.name }}</h4>
 			<p>{{ item?.category }}</p>
 		</a>
 	</div>

@@ -8,12 +8,14 @@ import { ListComponent } from './list/list.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { SWAPIService } from './swapi.service';
 import { appRoutingProviders, routing } from './app.routes';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

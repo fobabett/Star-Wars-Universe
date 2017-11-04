@@ -1,24 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { SWAPIService } from '../swapi.service';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
+
+import { SWAPIService } from '../swapi.service';
+import { SearchBarComponent } from '../search-bar';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
+  providers: [SearchBarComponent]
 })
 export class ListComponent implements OnInit {
 
   itemsPerPage : number = 10;
+  searchInput : string = '';
 
-  constructor(private service: SWAPIService) {
+  constructor(private service: SWAPIService, public searchBar: SearchBarComponent) {
     if(this.service.data === undefined) {
       this.getData();
     }
   }
 
   ngOnInit() {
+  }
+
+  search(input:string) {
+    this.searchInput = input;
   }
 
   getData() {
@@ -44,7 +52,7 @@ export class ListComponent implements OnInit {
                 this.service.getFilms(i).subscribe(
                   res => this.service.data = this.service.data.concat(res.results.map((item) => {
                     item.category = 'films';
-                    item.id = item.url.split(`${item.category}/`)[1];
+                    item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
                     return item;
                   }))),
                   err => console.error(err)
@@ -53,7 +61,7 @@ export class ListComponent implements OnInit {
           } else {
             this.service.data = this.service.data.concat(res.results.map((item) => {
               item.category = 'films';
-              item.id = item.url.split(`${item.category}/`)[1];
+              item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
               return item;
             }));
           }
@@ -74,7 +82,7 @@ export class ListComponent implements OnInit {
                 this.service.getPeople(i).subscribe(
                   res => this.service.data = this.service.data.concat(res.results.map((item) => {
                     item.category = 'people';
-                    item.id = item.url.split(`${item.category}/`)[1];
+                    item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
                     return item;
                   }))),
                   err => console.error(err)
@@ -100,7 +108,7 @@ export class ListComponent implements OnInit {
                 this.service.getPlanets(i).subscribe(
                   res => this.service.data = this.service.data.concat(res.results.map((item) => {
                     item.category = 'planets';
-                    item.id = item.url.split(`${item.category}/`)[1];
+                    item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
                     return item;
                   }))),
                   err => console.error(err)
@@ -126,7 +134,7 @@ export class ListComponent implements OnInit {
                 this.service.getSpecies(i).subscribe(
                   res => this.service.data = this.service.data.concat(res.results.map((item) => {
                     item.category = 'species';
-                    item.id = item.url.split(`${item.category}/`)[1];
+                    item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
                     return item;
                   }))),
                   err => console.error(err)
@@ -152,7 +160,7 @@ export class ListComponent implements OnInit {
                 this.service.getStarShips(i).subscribe(
                   res => this.service.data = this.service.data.concat(res.results.map((item) => {
                     item.category = 'starships';
-                    item.id = item.url.split(`${item.category}/`)[1];
+                    item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
                     return item;
                   }))),
                   err => console.error(err)
@@ -177,7 +185,7 @@ export class ListComponent implements OnInit {
                 this.service.getVehicles(i).subscribe(
                   res => this.service.data = this.service.data.concat(res.results.map((item) => {
                     item.category = 'vehicles';
-                    item.id = item.url.split(`${item.category}/`)[1];
+                    item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
                     return item;
                   }))),
                   err => console.error(err)

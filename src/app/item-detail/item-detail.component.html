@@ -1,3 +1,9 @@
-<p>
-  item-detail works!
-</p>
+<div class="content-container">
+	<h1>{{ item?.title ? item?.title : item?.name }}</h1>
+	<div class="content">
+		<div class="film-details" *ngIf="item?.category === 'films'">
+			<p>Director: {{ item?.director }}</p>
+			<p>Director: {{ item?.director }}</p>
+		</div>
+	</div>
+</div>
