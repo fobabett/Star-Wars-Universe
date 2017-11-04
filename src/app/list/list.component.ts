@@ -53,7 +53,6 @@ export class ListComponent implements OnInit {
                 this.service.getFilms(i).subscribe(
                   res => this.service.data = this.service.data.concat(res.results.map((item) => {
                     item.category = 'films';
-                    item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
                     return item;
                   }))),
                   err => console.error(err)
@@ -62,7 +61,6 @@ export class ListComponent implements OnInit {
           } else {
             this.service.data = this.service.data.concat(res.results.map((item) => {
               item.category = 'films';
-              item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
               return item;
             }));
           }
@@ -83,7 +81,6 @@ export class ListComponent implements OnInit {
                 this.service.getPeople(i).subscribe(
                   res => this.service.data = this.service.data.concat(res.results.map((item) => {
                     item.category = 'people';
-                    item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
                     return item;
                   }))),
                   err => console.error(err)
@@ -109,7 +106,6 @@ export class ListComponent implements OnInit {
                 this.service.getPlanets(i).subscribe(
                   res => this.service.data = this.service.data.concat(res.results.map((item) => {
                     item.category = 'planets';
-                    item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
                     return item;
                   }))),
                   err => console.error(err)
@@ -135,7 +131,6 @@ export class ListComponent implements OnInit {
                 this.service.getSpecies(i).subscribe(
                   res => this.service.data = this.service.data.concat(res.results.map((item) => {
                     item.category = 'species';
-                    item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
                     return item;
                   }))),
                   err => console.error(err)
@@ -161,7 +156,6 @@ export class ListComponent implements OnInit {
                 this.service.getStarShips(i).subscribe(
                   res => this.service.data = this.service.data.concat(res.results.map((item) => {
                     item.category = 'starships';
-                    item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
                     return item;
                   }))),
                   err => console.error(err)
@@ -186,7 +180,6 @@ export class ListComponent implements OnInit {
                 this.service.getVehicles(i).subscribe(
                   res => this.service.data = this.service.data.concat(res.results.map((item) => {
                     item.category = 'vehicles';
-                    item.id = item.url.split(`${item.category}/`)[1].split('/')[0];
                     return item;
                   }))),
                   err => console.error(err)

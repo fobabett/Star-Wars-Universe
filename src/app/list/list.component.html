@@ -1,12 +1,12 @@
-<div class="content-container">
-	<div class="banner">
+<div class="content-container container">
+	<div class="hero">
 		<h1>Star Wars Universe</h1>
 		<div>
 			<search-bar (search)='search($event)'></search-bar>
 		</div>
 	</div>
 	<div class="grid">
-		<a class="grid-item" *ngFor="let item of service.data | search: searchInput" routerLink="/{{ item?.category }}/{{ item?.id }}">
+		<a class="grid-item" *ngFor="let item of service.data | search: searchInput" href="">
 			<h4 class="grid-item-title">{{ item?.title ? item?.title : item?.name }}</h4>
 			<p>{{ item?.category }}</p>
 		</a>
